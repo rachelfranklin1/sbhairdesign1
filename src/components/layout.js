@@ -13,7 +13,7 @@ import Header from "./header"
 import SideNav from "./sideNav"
 import "./layout.css"
 import "./sideNav.css"
-import Image from "./image"
+import Plant from "../images/plant.png"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -27,22 +27,22 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <div
+      style={{
+        margin: `0 auto`,
+        maxWidth: "100%",
+        minHeight: 960,
+        padding: `0 1.0875rem 1.45rem`,
+        backgroundImage: `url(${Plant})`,
+        backgroundSize: "100% 100%",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <Header siteTitle={data.site.siteMetadata.title} />
       <SideNav />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-          backgroundImage: `url(${Image})`,
-        }}
-      >
-        <main>{children}</main>
-        <footer></footer>
-      </div>
-      s
-    </>
+      <main style={{ padding: "10% 15%" }}>{children}</main>
+      <footer></footer>
+    </div>
   )
 }
 
